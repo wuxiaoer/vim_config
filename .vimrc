@@ -63,13 +63,31 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 
+Plugin 'a.vim'
+Plugin 'grep.vim'
 Plugin 'taglist.vim'
 Plugin 'cscope.vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'rickharris/vim-monokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'sickill/vim-monokai'
 
+"html
+"Plugin 'isnowfy/python-vim-instant-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'nelstrom/vim-markdown-preview'
+
+"python sytax checker
+"Plugin 'nvie/vim-flake8'
+"Plugin 'vim-scripts/Pydiction'
+"Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/syntastic'
+
+"auto-completion stuff
+""Plugin 'klen/python-mode'
+"Plugin 'Valloric/YouCompleteMe'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "
 " 常用配置
@@ -101,8 +119,9 @@ Plugin 'rickharris/vim-monokai'
 
 	"设置主题颜色
 	"colorscheme murphy
-	"colorscheme molokai
-	"let g:solarized_termcolors=16
+	colorscheme monokai
+
+    "let g:solarized_termcolors=16
 	"colorscheme solarized
 
 	"设置字体, 字体名和字号
@@ -177,8 +196,8 @@ Plugin 'rickharris/vim-monokai'
 	set incsearch
 
 	"用浅色高亮当前行
-	autocmd InsertLeave * se nocul
-	autocmd InsertEnter * se cul
+	"autocmd InsertLeave * se nocul
+	"autocmd InsertEnter * se cul
 
 	"显示中文帮助
 	if version >= 603
@@ -204,6 +223,9 @@ Plugin 'rickharris/vim-monokai'
 	"设置鼠标
 	set mouse=a
 
+    " 系统剪切板
+    set clipboard=unnamed
+
     "设置取消备份 禁止临时文件生成
     set nobackup
     set noswapfile
@@ -225,7 +247,7 @@ Plugin 'rickharris/vim-monokai'
 " Python 自动补全
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-Plugin 'a.vim'
+iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -278,7 +300,7 @@ func SetTitle()
 
     if &filetype == 'cpp'
 
-        call append(line(".")+6, "#include<iostream>")
+        call append(line(".")+6, "#include <iostream>")
 
         call append(line(".")+7, "using namespace std;")
 
@@ -288,7 +310,7 @@ func SetTitle()
 
     if &filetype == 'c'
 
-        call append(line(".")+6, "#include<stdio.h>")
+        call append(line(".")+6, "#include <stdio.h>")
 
         call append(line(".")+7, "")
 
